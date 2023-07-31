@@ -1,8 +1,14 @@
+// -- CODE TO CHOOSE PLACE USING LOCATION SERVICE OR BY TYPING THE NAME OF THE PLACE AND DISPLAYING THE DETAILS --
+
 import 'package:flutter/material.dart';
 import 'package:free_place_search/place_search.dart';
 import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
 import 'dart:convert';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+
+import 'package:predict/current_location.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +38,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Position? _currentPosition;
+
   String _data = 'Loading..';
   double _lat = 0.0;
   double _lon = 0.0;
@@ -71,6 +79,53 @@ class _MyHomePageState extends State<MyHomePage> {
     // _fetchData();
   }
 
+  // Current location
+  Future<bool> _handleLocationPermission() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+              'Location services are disabled. Please enable the services')));
+      return false;
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Location permissions are denied')));
+        return false;
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+              'Location permissions are permanently denied, we cannot request permissions.')));
+      return false;
+    }
+    return true;
+  }
+
+  Future<void> _getCurrentPosition() async {
+    final hasPermission = await _handleLocationPermission();
+
+    if (!hasPermission) return;
+    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+        .then((Position position) {
+      setState(() {
+        _currentPosition = position;
+        _lat = _currentPosition?.latitude ?? 0.0;
+        _lon = _currentPosition?.longitude ?? 0.0;
+      });
+      // _getAddressFromLatLng(_currentPosition!);
+    }).catchError((e) {
+      debugPrint(e);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +143,17 @@ class _MyHomePageState extends State<MyHomePage> {
               _getCoords(lat, lon);
             }),
 
+            // --- Get current location ---
+            ElevatedButton(
+              onPressed: () {
+                _getCurrentPosition();
+                _fetchData(_lat,
+                    _lon); // don't call it like this. Call this fn only after getting the positions
+                _viewData = true;
+              },
+              child: const Text("Get Current Location"),
+            ),
+
             // --- Get Weather ---
             ElevatedButton(
               onPressed: () {
@@ -97,18 +163,27 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Get data'),
             ),
             Visibility(
-                visible: _viewData,
-                child: Column(
-                  children: [
-                    Text(
-                        'Longitude: $_lon, Temperature: $_temp, \n Main: $_main'),
-                    Text('Description: $_descr'),
-                    // Text('Feels like: $_feels'),
-                    _feels == null
-                        ? const Text('Data is loading')
-                        : Text('Feels like: $_feels'),
-                  ],
-                ))
+              visible: _viewData,
+              child: Column(
+                children: [
+                  Text(
+                      'Longitude: $_lon, Temperature: $_temp, \n Main: $_main'),
+                  Text('Description: $_descr'),
+                  // Text('Feels like: $_feels'),
+                  _feels == null
+                      ? const Text('Data is loading')
+                      : Text('Feels like: $_feels'),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                // Add a navigating to current_location.dart
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LocationPage()));
+              },
+              child: Text('Go to next page'),
+            ),
           ],
         ),
       ),
