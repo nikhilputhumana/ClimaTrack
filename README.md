@@ -2,8 +2,14 @@
 
 A new Flutter project.
 
-## Getting Started
+## Dependedncies Used
 
+* free_place_search
+* geocoding
+* geolocator
+* http
+
+## Getting Started
 The project is located at 
 
 D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC
