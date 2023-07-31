@@ -61,10 +61,10 @@ packages:
     dependency: transitive
     description:
       name: dio
-      sha256: "7d328c4d898a61efc3cd93655a0955858e29a0aa647f0f9e02d59b3bb275e2e8"
+      sha256: "9d6445da1caf8412070670c03c39ad5b12a78cc8c2361417b220905a2bcbdd2f"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.6"
+    version: "5.3.1"
   fake_async:
     dependency: transitive
     description:
@@ -100,10 +100,10 @@ packages:
     dependency: "direct main"
     description:
       name: free_place_search
-      sha256: e37cd8cbf1e836db41d29a97c4bb3890032d5d838d5c499cc3ba74e07d792619
+      sha256: "2047552cc6435e71488e447b4bfc41b3b2b05f55186545d41c39a12ec6e91cc8"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   geocoding:
     dependency: "direct main"
     description:

@@ -34,7 +34,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  free_place_search: ^1.0.4
+  free_place_search: ^1.0.5
   geocoding: ^2.1.0
   geolocator: ^9.0.2
   http: ^1.1.0
