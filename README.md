@@ -1,4 +1,4 @@
-# predict
+# Weather App
 
 A new Flutter project.
 
@@ -8,6 +8,7 @@ A new Flutter project.
 * geocoding
 * geolocator
 * http
+* 
 
 ## Getting Started
 The project is located at 
