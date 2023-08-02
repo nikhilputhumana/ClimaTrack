@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../key.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
@@ -21,7 +22,7 @@ class _ScreenHomeState extends State<ScreenHome> {
   String _descr = '';
   String? _feels;
 
-  final _apiKey = 'b1584d4a0261c3419aa2d44068fa354b';
+  final _apiKey = apiKey;
 
   Future<void> _fetchData() async {
     final response = await http.get(Uri.parse(

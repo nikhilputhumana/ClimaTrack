@@ -8,12 +8,12 @@ A new Flutter project.
 * geocoding
 * geolocator
 * http
-* 
+* shared_preferences
 
 ## Getting Started
 The project is located at 
 
-D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC
+D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC (for personal references)
 
 
 ### Location permission
@@ -23,6 +23,12 @@ To provide permission for location, add the following line as 2nd line (before a
 ```xml
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> 
 ```
+
+
+
+## To Do
+
+* Get data when we are in screensplash state itself.
 
 ## Thanks :)
 
