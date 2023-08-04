@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:predict/screens/home_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenHome extends StatefulWidget {
@@ -9,7 +10,6 @@ class ScreenHome extends StatefulWidget {
 }
 
 class _ScreenHomeState extends State<ScreenHome> {
-
   double _lat = 0.0;
   double _lon = 0.0;
   String _temp = '';
@@ -64,13 +64,25 @@ class _ScreenHomeState extends State<ScreenHome> {
               height: 20,
             ),
 
-            //  --- No need for this button. Juat added for debugging purposes --- 
+            //  --- No need for this button. Juat added for debugging purposes ---
             ElevatedButton(
               onPressed: () {
                 // _fetchData();
                 _getWeather();
               },
               child: const Text('Get weather'),
+            ),
+
+            // Navigating to next page (not needed)
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => HomeModel(),
+                  ),
+                );
+              },
+              child: Text('Next Page'),
             ),
           ],
         ),

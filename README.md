@@ -28,7 +28,9 @@ To provide permission for location, add the following line as 2nd line (before a
 
 ## To Do
 
-* Get data when we are in screensplash state itself.
+* Add option to star repo in sidebar.
+* Create a Welcome page.
+* Create widgets for each items.
 
 ## Thanks :)
 

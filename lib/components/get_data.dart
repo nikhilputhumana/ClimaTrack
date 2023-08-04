@@ -24,7 +24,7 @@ Future<void> _getCoords() async {
 Future<void> fetchData() async {
   await _getCoords();
   final response = await http.get(Uri.parse(
-      'https://api.openweathermap.org/data/2.5/forecast?lat=$_lat&lon=$_lon&appid=$_apiKey'));
+      'https://api.openweathermap.org/data/2.5/forecast?lat=$_lat&lon=$_lon&units=metric&appid=$_apiKey'));
   if (response.statusCode == 200) {
     final content = json.decode(response.body);
 
