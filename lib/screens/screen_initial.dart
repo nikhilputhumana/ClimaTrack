@@ -1,4 +1,4 @@
-// CODE TO CHOOSE PLACE OR CURRENT LOCATION AND GO TO NEXT PAGE AND DISPLAY IT THERE
+// UI TO CHOOSE PLACE OR CURRENT LOCATION AND GO TO NEXT PAGE AND DISPLAY IT THERE
 
 import 'package:flutter/material.dart';
 import 'package:predict/components/place_select.dart';

@@ -1,6 +1,7 @@
-// CODE TO CHOOSE PLACE OR CURRENT LOCATION AND GO TO NEXT PAGE AND DISPLAY IT THERE
+// CODE TO CHOOSE PLACE OR CURRENT LOCATION AND RETRUN THOSE RESULTS TO THE SHARED_PREFS VARIABLES
 
 import 'package:flutter/material.dart';
+import 'package:predict/components/get_data.dart';
 import 'package:predict/screens/screen_home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:free_place_search/place_search.dart';
@@ -71,6 +72,30 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
     _saveData();
   }
 
+  // Getting cordinates from place search
+  void _getCoords(lat, lon) {
+    _lat = lat;
+    _lon = lon;
+    _saveData();
+  }
+
+  // SAVE DATA AND GO TO NEXT PAGE
+  void _saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isFirstTime', false);
+    await prefs.setDouble('latitude', _lat);
+    await prefs.setDouble('longitude', _lon);
+    await fetchData();
+
+    if (context.mounted) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (ctx) => const ScreenHome(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,9 +112,11 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
           // --- Get current location ---
           ElevatedButton(
             onPressed: () {
+              buildShowDialog(context);
               _getCurrentPosition();
             },
-            child: const Text("Get Current Location"),
+            child: const Text('Get Current Location'),
+            // child: const Text("Get Current Location"),
           ),
         ],
       ),
@@ -110,26 +137,16 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
     );
   }
 
-  // Getting cordinates from place search
-  void _getCoords(lat, lon) {
-    _lat = lat;
-    _lon = lon;
-    _saveData();
-  }
-
-  // SAVE DATA AND GO TO NEXT PAGE
-  void _saveData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isFirstTime', false);
-    await prefs.setDouble('latitude', _lat);
-    await prefs.setDouble('longitude', _lon);
-
-    if (context.mounted) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (ctx) => const ScreenHome(),
-        ),
-      );
-    }
+  // --- Show a circularProgressIndicator like a popup on choose location button press ---
+  buildShowDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
   }
 }

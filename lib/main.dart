@@ -18,23 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FutureBuilder<bool>(
-        future: _checkFirstTime(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return ScreenSplash();
-          } else {
-            return snapshot.data! ? ScreenInitial() : ScreenHome();
-          }
-        },
-      ),
-      // Defining other routes
-      routes: {'/homepage': (context) => ScreenHome()},
+      home: ScreenSplash(),
     );
-  }
-
-  Future<bool> _checkFirstTime() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('isFirstTime') ?? true;
   }
 }

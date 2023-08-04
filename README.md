@@ -1,6 +1,6 @@
 # Weather App
 
-A new Flutter project.
+A new Flutter project. [Backend Done]
 
 ## Dependedncies Used
 
