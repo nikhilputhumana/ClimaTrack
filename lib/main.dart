@@ -16,8 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Weather App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Color.fromARGB(255, 17, 29, 59),
+          drawerTheme: DrawerThemeData(backgroundColor: Color.fromARGB(255, 17, 29, 59)),
+          textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: Colors.white,
+                // displayColor: Colors.white
+              )),
       home: ScreenSplash(),
     );
   }

@@ -30,6 +30,7 @@ class _HomeModelState extends State<HomeModel> {
             allowImplicitScrolling: true,
             scrollDirection: Axis.horizontal,
             controller: _pageController,
+            // physics: ,
             onPageChanged: (int pnum) {
               setState(() {
                 _activePage = pnum;

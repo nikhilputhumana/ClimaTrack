@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/place_select.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -6,9 +7,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text('PAGE 2'),
-      ),
+      child: PlaceSelectWidget(),
     );
   }
 }

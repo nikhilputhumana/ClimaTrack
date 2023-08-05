@@ -99,41 +99,46 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          PlaceAutocomplete.widget(onDone: (e) {
-            final add = e.point?.toMap();
-            final lat = add?['lat'];
-            final lon = add?['lon'];
-            _getCoords(lat, lon);
-          }),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              PlaceAutocomplete.widget(onDone: (e) {
+                final add = e.point?.toMap();
+                final lat = add?['lat'];
+                final lon = add?['lon'];
+                _getCoords(lat, lon);
+              }),
 
-          // --- Get current location ---
-          ElevatedButton(
-            onPressed: () {
-              buildShowDialog(context);
-              _getCurrentPosition();
-            },
-            child: const Text('Get Current Location'),
-            // child: const Text("Get Current Location"),
+              // --- Get current location ---
+              ElevatedButton(
+                onPressed: () {
+                  buildShowDialog(context);
+                  _getCurrentPosition();
+                },
+                child: const Text('Get Current Location'),
+                // child: const Text("Get Current Location"),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
 
       // ----- Place Select -----
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          PlaceAutocomplete.show(
-            onDone: (e) {
-              Navigator.pop(context);
-            },
-            context: context,
-          );
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     PlaceAutocomplete.show(
+      //       onDone: (e) {
+      //         Navigator.pop(context);
+      //       },
+      //       context: context,
+      //     );
+      //   },
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 
