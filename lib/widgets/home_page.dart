@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:predict/widgets/navdrawer.dart';
+import 'package:predict/widgets/weather_tile.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -129,13 +130,106 @@ class HomePage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
+
               // -- wind - temp - humidity
+              const DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 31, 43, 71),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(60),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(26.0),
+                  child: IntrinsicHeight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // -----
+                        Column(
+                          children: [
+                            Text(
+                              'Wind',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text('8 km/hr'),
+                          ],
+                        ),
+                        VerticalDivider(
+                          color: Color.fromARGB(255, 17, 29, 59),
+                          thickness: 2,
+                          // width: 10,
+                        ),
+                        // ---
+                        Column(
+                          children: [
+                            Text(
+                              'Feels like',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Spacer(),
+                            Text('18 \u2103'),
+                          ],
+                        ),
+                        VerticalDivider(
+                          color: Color.fromARGB(255, 17, 29, 59),
+                          thickness: 2,
+                          // width: 10,
+                        ),
+                        // ----
+                        Column(
+                          children: [
+                            Text(
+                              'Humidity',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Spacer(),
+                            Text('49%'),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              // --- today - tmwrw - 7 days
+              // SHOW THAT TEXT HERE
+              Text('--- TODAY --- TOMMORROW --- 7 DAYS ---'),
+
+              // Horizontal list
               Container(
-                color: Color.fromARGB(255, 31,43,71),
-                child: Row(
+                height: 230,
+                child: ListView(
+                  padding: EdgeInsets.all(10.0),
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
                   children: [
-                    Text('wind'),
+                    WeatherTile(),
+                    SizedBox(width: 20),
+                    WeatherTile(),
+                    SizedBox(width: 20),
+                    WeatherTile(),
+                    SizedBox(width: 20),
+                    WeatherTile(),
+                    SizedBox(width: 20),
+                    WeatherTile(),
+                    SizedBox(width: 20),
+                    WeatherTile(),
+                    SizedBox(width: 20),
                   ],
                 ),
               ),

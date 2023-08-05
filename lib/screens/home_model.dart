@@ -65,8 +65,8 @@ class _HomeModelState extends State<HomeModel> {
                             child: CircleAvatar(
                               radius: 5,
                               backgroundColor: _activePage == index
-                                  ? const Color.fromARGB(255, 64, 132, 188)
-                                  : const Color.fromARGB(255, 114, 186, 246),
+                                  ? const Color.fromARGB(255, 114, 186, 246)
+                                  : const Color.fromARGB(255, 64, 132, 188),
                             ),
                           ),
                         )),
