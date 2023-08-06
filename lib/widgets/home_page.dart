@@ -1,10 +1,9 @@
 // UI OF HOME PAGE
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:predict/widgets/navdrawer.dart';
 import 'package:predict/widgets/weather_tile.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -40,7 +39,7 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        'Monday 12 February',
+                        DateFormat('EEEE, d MMM').format(DateTime.now()),
                         style: TextStyle(
                           fontSize: 15,
                         ),
@@ -208,13 +207,57 @@ class HomePage extends StatelessWidget {
 
               // --- today - tmwrw - 7 days
               // SHOW THAT TEXT HERE
-              Text('--- TODAY --- TOMMORROW --- 7 DAYS ---'),
 
-              // Horizontal list
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        fixedSize: Size.fromWidth(
+                            MediaQuery.of(context).size.width / 4),
+
+                        // backgroundColor: Color.fromARGB(255, 133, 180, 234),
+                        // disabledBackgroundColor: Colors.black,
+                      ),
+                      child: const Text('Today'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        fixedSize: Size.fromWidth(
+                            MediaQuery.of(context).size.width / 3.9),
+                      ),
+                      child: const Text('Tomorrow'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        fixedSize: Size.fromWidth(
+                            MediaQuery.of(context).size.width / 4),
+                      ),
+                      child: const Text('Day After'),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Horizontal list - REMOVE PADDNG FOR THIS
               Container(
+                padding: EdgeInsets.only(top: 20),
                 height: 230,
                 child: ListView(
-                  padding: EdgeInsets.all(10.0),
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   children: [
@@ -229,7 +272,6 @@ class HomePage extends StatelessWidget {
                     WeatherTile(),
                     SizedBox(width: 20),
                     WeatherTile(),
-                    SizedBox(width: 20),
                   ],
                 ),
               ),

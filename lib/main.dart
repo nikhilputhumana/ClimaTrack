@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Color.fromARGB(255, 17, 29, 59),
-          drawerTheme: DrawerThemeData(backgroundColor: Color.fromARGB(255, 17, 29, 59)),
+          drawerTheme: DrawerThemeData(
+            backgroundColor: Color.fromARGB(255, 133, 180, 234),
+          ),
           textTheme: Theme.of(context).textTheme.apply(
                 bodyColor: Colors.white,
                 // displayColor: Colors.white

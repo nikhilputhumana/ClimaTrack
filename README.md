@@ -9,6 +9,7 @@ A new Flutter project. [Backend Done]
 * geolocator
 * http
 * shared_preferences
+* intl 
 
 ## Getting Started
 The project is located at 
