@@ -48,5 +48,4 @@ class ScreenSplash extends StatelessWidget {
 
     // return prefs.getBool('isFirstTime') ?? true;
   }
-
 }

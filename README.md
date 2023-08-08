@@ -29,6 +29,15 @@ To provide permission for location, add the following line as 2nd line (before a
 
 ## To Do
 
+* Store each days data as separate map in get_data.dart
+* Save it to sharedprefs
+* Fetch that data in screen_home.dart and convert it to Map, then get specific data.
+* Show that data 
+* DONE
+
+---------------- After that do these ------------------
+
+* Get values onto home page (COMPLETE HOME PAGE)
 * Add option to star repo in sidebar.
 * Create a Welcome page.
 * Create widgets for each items.

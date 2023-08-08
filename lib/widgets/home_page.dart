@@ -4,11 +4,41 @@ import 'package:flutter/material.dart';
 import 'package:predict/widgets/navdrawer.dart';
 import 'package:predict/widgets/weather_tile.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  String _city = '';
+  String _country = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _getWeather();
+  }
+
+  void _getWeather() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      // _lat = prefs.getDouble('latitude') ?? 0.0;
+      // // final double? _lat = prefs.getDouble('latitude');
+      // _lon = prefs.getDouble('longitude') ?? 0.0;
+      // _temp = prefs.getString('temp') ?? 'Loading';
+      // _wind = prefs.getString('wind') ?? 'Loading';
+      // _humidity = prefs.getString('humidity') ?? 'Loading';
+      _city = prefs.getString('city') ?? 'Loading';
+      _country = prefs.getString('country') ?? 'Loading';
+      // _descr = prefs.getString('descr') ?? 'Loading';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +78,7 @@ class HomePage extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        'United Arab, Dubai',
+                        '$_city, $_country',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -145,6 +175,25 @@ class HomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        // ---
+                        Column(
+                          children: [
+                            Text(
+                              'Feels like',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Spacer(),
+                            Text('18 \u2103'),
+                          ],
+                        ),
+                        VerticalDivider(
+                          color: Color.fromARGB(255, 17, 29, 59),
+                          thickness: 2,
+                          // width: 10,
+                        ),
                         // -----
                         Column(
                           children: [
@@ -161,25 +210,7 @@ class HomePage extends StatelessWidget {
                             Text('8 km/hr'),
                           ],
                         ),
-                        VerticalDivider(
-                          color: Color.fromARGB(255, 17, 29, 59),
-                          thickness: 2,
-                          // width: 10,
-                        ),
-                        // ---
-                        Column(
-                          children: [
-                            Text(
-                              'Feels like',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Spacer(),
-                            Text('18 \u2103'),
-                          ],
-                        ),
+
                         VerticalDivider(
                           color: Color.fromARGB(255, 17, 29, 59),
                           thickness: 2,
