@@ -29,11 +29,7 @@ To provide permission for location, add the following line as 2nd line (before a
 
 ## To Do
 
-* Store each days data as separate map in get_data.dart
-* Save it to sharedprefs
-* Fetch that data in screen_home.dart and convert it to Map, then get specific data.
-* Show that data 
-* DONE
+* Change color when buttons today, tmrw & day aftr is clicked (when active one color, when inactive another one)
 
 ---------------- After that do these ------------------
 

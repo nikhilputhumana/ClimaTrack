@@ -53,10 +53,9 @@ Future<void> fetchData() async {
       'https://api.openweathermap.org/data/2.5/forecast?lat=$_lat&lon=$_lon&units=metric&cnt=24&appid=$_apiKey'));
   if (response.statusCode == 200) {
     final content = json.decode(response.body);
-    
+
     _city = '${content['city']['name']}';
     _country = '${content['city']['country']}';
-
 
     _temp = '${content['list'][0]['main']['temp']}';
     _descr = '${content['list'][0]['weather'][0]['description']}';
@@ -64,27 +63,9 @@ Future<void> fetchData() async {
     _humidity = '${content['list'][0]['main']['humidity']}';
     _dtdxt = '${content['list'][0]['dt_txt']}';
 
-    Map<String, dynamic> dayCurr = {};
+    // print('dtdxt is --- $_dtdxt');
+
     Map<String, dynamic> dayDetails = {};
-
-    String tail = 'first';
-    dayCurr[tail] = {
-      '_temp': '${content['list'][0]['main']['temp']}',
-      '_descr': '${content['list'][0]['weather'][0]['description']}',
-      '_wind': '${content['list'][0]['wind']['speed']}',
-      '_dtdxt': '${content['list'][0]['dt_txt']}',
-      '_humidity': '${content['list'][0]['main']['humidity']}',
-      '_feels': '${content['list'][0]['main']['feels_like']}',
-    };
-
-    dayCurr['second'] = {
-      '_temp': '${content['list'][1]['main']['temp']}',
-      '_descr': '${content['list'][1]['weather'][0]['description']}',
-      '_wind': '${content['list'][1]['wind']['speed']}',
-      '_dtdxt': '${content['list'][1]['dt_txt']}',
-      '_humidity': '${content['list'][0]['main']['humidity']}',
-      '_feels': '${content['list'][0]['main']['feels_like']}',
-    };
 
     final thisDate = content['list'][0]['dt_txt'];
     // print('This day is $thisDate');
@@ -94,22 +75,30 @@ Future<void> fetchData() async {
     int cnt3 = 1;
 
     // -- Fetching contents and storing it on lists. --
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 24; i++) {
       // Complete this for loop. The loop should store in Maps. The Map has name
       // like weatherDet[day timeZone]. These Maps will be saved into sharedPrefs
       // using loops. These values will be used to get the data to home page.
       final thisDate = content['list'][i]['dt_txt'];
       List<String> parts = thisDate.split(' ');
       String firstPart = parts[0];
+      String _time = thisDate.substring(
+          thisDate.indexOf(' ') + 1, thisDate.indexOf(' ') + 6);
 
       if (firstPart == _today) {
+        // final _dtdx = '${content['list'][i]['dt_txt']}';
+        // DateTime dateTime = DateTime.parse(thisDate);
+        // String _time = '${dateTime.hour}:${dateTime.minute}';
+
         dayDetails[{'1' '$cnt1'}.toString()] = {
           'temp': '${content['list'][i]['main']['temp']}',
           'descr': '${content['list'][i]['weather'][0]['description']}',
           'wind': '${content['list'][i]['wind']['speed']}',
           'dtdxt': '${content['list'][i]['dt_txt']}',
+          'time': _time,
           'humidity': '${content['list'][i]['main']['humidity']}',
           'feels': '${content['list'][i]['main']['feels_like']}',
+          'imgId': '${content['list'][i]['weather'][0]['icon']}',
         };
         cnt1 += 1;
       } else if (firstPart == _tmrw) {
@@ -118,8 +107,10 @@ Future<void> fetchData() async {
           'descr': '${content['list'][i]['weather'][0]['description']}',
           'wind': '${content['list'][i]['wind']['speed']}',
           'dtdxt': '${content['list'][i]['dt_txt']}',
+          'time': _time,
           'humidity': '${content['list'][i]['main']['humidity']}',
           'feels': '${content['list'][i]['main']['feels_like']}',
+          'imgId': '${content['list'][i]['weather'][0]['icon']}',
         };
         cnt2 += 1;
       } else if (firstPart == _dayAfter) {
@@ -128,17 +119,18 @@ Future<void> fetchData() async {
           'descr': '${content['list'][i]['weather'][0]['description']}',
           'wind': '${content['list'][i]['wind']['speed']}',
           'dtdxt': '${content['list'][i]['dt_txt']}',
+          'time': _time,
           'humidity': '${content['list'][i]['main']['humidity']}',
           'feels': '${content['list'][i]['main']['feels_like']}',
+          'imgId': '${content['list'][i]['weather'][0]['icon']}',
         };
         cnt3 += 1;
       }
     }
 
-    Map<String, dynamic> retrievd = dayCurr['second'];
-    final dayCurrData = json.encode(retrievd); // Converting to string
-
-    for (int i = 1; i < cnt1; i++) {}
+    // Map<String, dynamic> dayCurr = {};
+    // Map<String, dynamic> retrievd = dayCurr['second'];
+    // final dayCurrData = json.encode(retrievd); // Converting to string
 
     // Storing into sharedprefs
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -155,12 +147,8 @@ Future<void> fetchData() async {
     await prefs.setString('dtdxt', _dtdxt);
     // await prefs.setString('dtdxt', dayCurr['_dtdxt']);
 
-    int k = 1;
-
-    await prefs.setString('mydata$k', 'hello');
-
-    await prefs.setString(
-        'myMap', dayCurrData); // Fetches the whole data. Only this is enough.
+    // await prefs.setString('myMap', dayCurrData); // Fetches the whole data. Only this is enough.
+    // print('cnt2 is $cnt2');
 
     for (int i = 1; i < cnt1; i++) {
       Map<String, dynamic> retrievd = dayDetails[{'1' '$i'}.toString()];
