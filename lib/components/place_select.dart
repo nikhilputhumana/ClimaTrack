@@ -105,12 +105,19 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              PlaceAutocomplete.widget(onDone: (e) {
-                final add = e.point?.toMap();
-                final lat = add?['lat'];
-                final lon = add?['lon'];
-                _getCoords(lat, lon);
-              }),
+              PlaceAutocomplete.widget(
+                onDone: (e) {
+                  final add = e.point?.toMap();
+                  final lat = add?['lat'];
+                  final lon = add?['lon'];
+                  _getCoords(lat, lon);
+                },
+                // style: TextStyle(color: Colors.white),
+              ),
+
+              const SizedBox(
+                height: 10,
+              ),
 
               // --- Get current location ---
               ElevatedButton(
@@ -118,7 +125,17 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
                   buildShowDialog(context);
                   _getCurrentPosition();
                 },
-                child: const Text('Get Current Location'),
+                style: ElevatedButton.styleFrom(
+                  // backgroundColor: Color.fromARGB(255, 133, 180, 234),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  fixedSize: Size(MediaQuery.of(context).size.width / 1.1, 45),
+                ),
+                child: const Text(
+                  'Get Current Location',
+                  style: TextStyle(fontSize: 16),
+                ),
                 // child: const Text("Get Current Location"),
               ),
             ],

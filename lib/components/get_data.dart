@@ -59,7 +59,7 @@ Future<void> fetchData() async {
 
     _temp = '${content['list'][0]['main']['temp']}'
         .substring(0, '${content['list'][0]['main']['temp']}'.indexOf('.'));
-    print('temp iss $_temp');
+    // print('temp iss $_temp');
     // _descr = '${content['list'][0]['weather'][0]['description']}';
     // _wind = '${content['list'][0]['wind']['speed']}';
     // _humidity = '${content['list'][0]['main']['humidity']}';

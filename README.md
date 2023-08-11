@@ -1,21 +1,29 @@
 # Weather App - ClimaTrack
 
-A new Flutter project. [Backend Done]
+A Flutter App to view the present and next two day's climate for the given location. Shows basic details like:
+* Temperature
+* Humidity
+* Wind speed
+* Description of present condition
+* Temperature actually felt
 
 ## Dependedncies Used
 
+The following dependencies are used in this project:
 * free_place_search
 * geocoding
 * geolocator
 * http
 * shared_preferences
-* intl 
+* intl
+* url_launcher
 
-## Getting Started
-The project is located at 
+## Screenshots
 
-D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC (for personal references)
+<img> 
+<img>
 
+## My Notes
 
 ### Location permission
 
@@ -25,19 +33,39 @@ To provide permission for location, add the following line as 2nd line (before a
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> 
 ```
 
+To open link in browser, add the following line next to the above code.
 
+```xml
+<queries>
+    <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="https" />
+    </intent>
+</queries>
+```
 
 ## To Do
 
-* Next create listview in home_page.dart.
-* Change color when buttons today, tmrw & day aftr is clicked (when active one color, when inactive another one)
-
----------------- After that do these ------------------
-
-* Get values onto home page (COMPLETE HOME PAGE)
-* Add option to star repo in sidebar.
+### Start Here
+* Create a Logo.
+* Create Splash Screen.
 * Create a Welcome page.
-* Create widgets for each items.
+* Swipe down to refresh.
+
+### Bug Fixes
+* Fix time zone showing multiple times for Today.
+* Keyboard should automatically close when switched from search page to main page (to avoid pixels overflowing).
+
+### Optional
+* Create popup for showing detailed data about each time zone.
+* Orange color for hot climate and blue color for cold climate.
+
+### Location in PC
+The project is located at 
+
+D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC (for personal references)
+
 
 ## Thanks :)
 

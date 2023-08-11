@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,6 +16,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Color _color1 = const Color.fromARGB(255, 133, 180, 234);
+  Color _color2 = const Color.fromARGB(255, 31, 43, 71);
+  Color _color3 = const Color.fromARGB(255, 31, 43, 71);
 
   int cnt = 0;
   int cnt1 = 0;
@@ -25,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   String _city = '';
   String _country = '';
   String _iconId = '04n';
-  String _temp = '';
 
   List<Map<dynamic, dynamic>> toTile = [];
   final List<Map<dynamic, dynamic>> toTileDay1 = [];
@@ -94,12 +97,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _getWeather();
   }
-
-  // void _changeButtonColor() {
-  //   setState(() {
-  //     buttonColor = Colors.red; // Change button color when clicked
-  //   });
-  // }
 
   void _getWeather() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -247,22 +244,22 @@ class _HomePageState extends State<HomePage> {
                     ),
                     onPressed: () => _scaffoldKey.currentState?.openDrawer(),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         DateFormat('EEEE, d MMM').format(DateTime.now()),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Text(
                         '$_city, $_country',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -280,13 +277,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width / 2.3,
-                      child: Image.network(
-                        'https://openweathermap.org/img/wn/$_iconId@2x.png',
-                        scale: 0.5,
-                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
@@ -295,6 +288,10 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         // color: Color.fromARGB(255, 40, 51, 78),
+                      ),
+                      child: Image.network(
+                        'https://openweathermap.org/img/wn/$_iconId@2x.png',
+                        scale: 0.5,
                       ),
                     ),
 
@@ -310,7 +307,7 @@ class _HomePageState extends State<HomePage> {
                         Positioned(
                           child: Text(
                             '${_t1map['temp']}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 85,
                               fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 133, 180, 234),
@@ -318,7 +315,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           left: 90,
                           top: 10,
                           child: Text(
@@ -334,7 +331,7 @@ class _HomePageState extends State<HomePage> {
                           bottom: -14,
                           child: Text(
                             '${_t1map['descr']}',
-                            style: TextStyle(fontSize: 19),
+                            style: const TextStyle(fontSize: 19),
                           ),
                         ),
                       ],
@@ -381,14 +378,14 @@ class _HomePageState extends State<HomePage> {
                         // -----
                         Column(
                           children: [
-                            Text(
+                            const Text(
                               'Wind',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text(
@@ -401,7 +398,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
 
-                        VerticalDivider(
+                        const VerticalDivider(
                           color: Color.fromARGB(255, 17, 29, 59),
                           thickness: 2,
                           // width: 10,
@@ -409,14 +406,14 @@ class _HomePageState extends State<HomePage> {
                         // ----
                         Column(
                           children: [
-                            Text(
+                            const Text(
                               'Humidity',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text('${_t1map['humidity']}%'),
                           ],
                         ),
@@ -427,8 +424,6 @@ class _HomePageState extends State<HomePage> {
               ),
 
               // --- today - tmwrw - 7 days
-              // SHOW THAT TEXT HERE
-
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Row(
@@ -439,6 +434,10 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           toTile = [...toTileDay1];
                           cnt = cnt1;
+
+                          _color1 = const Color.fromARGB(255, 133, 180, 234);
+                          _color2 = const Color.fromARGB(255, 31, 43, 71);
+                          _color3 = const Color.fromARGB(255, 31, 43, 71);
                         });
                       },
                       style: ElevatedButton.styleFrom(
@@ -447,9 +446,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         fixedSize: Size.fromWidth(
                             MediaQuery.of(context).size.width / 4),
-
-                        // backgroundColor: Color.fromARGB(255, 133, 180, 234),
-                        // disabledBackgroundColor: Colors.black,
+                        backgroundColor: _color1,
                       ),
                       child: const Text('Today'),
                     ),
@@ -458,6 +455,10 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           toTile = [...toTileDay2];
                           cnt = cnt2;
+
+                          _color1 = const Color.fromARGB(255, 31, 43, 71);
+                          _color2 = const Color.fromARGB(255, 133, 180, 234);
+                          _color3 = const Color.fromARGB(255, 31, 43, 71);
                         });
                       },
                       style: ElevatedButton.styleFrom(
@@ -466,6 +467,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         fixedSize: Size.fromWidth(
                             MediaQuery.of(context).size.width / 3.9),
+                        backgroundColor: _color2,
                       ),
                       child: const Text('Tomorrow'),
                     ),
@@ -474,7 +476,10 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           toTile = [...toTileDay3];
                           cnt = cnt3;
-                          // _changeButtonColor();
+
+                          _color1 = const Color.fromARGB(255, 31, 43, 71);
+                          _color2 = const Color.fromARGB(255, 31, 43, 71);
+                          _color3 = const Color.fromARGB(255, 133, 180, 234);
                         });
                       },
                       style: ElevatedButton.styleFrom(
@@ -483,8 +488,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         fixedSize: Size.fromWidth(
                             MediaQuery.of(context).size.width / 4),
-
-                        
+                        backgroundColor: _color3,
                       ),
                       child: const Text('Day After'),
                     ),
@@ -492,9 +496,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              // Horizontal list - REMOVE PADDNG FOR THIS
+              // Horizontal list - REMOVE PADDNG FOR THIS ?? why bro
               Container(
-                padding: EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 20),
                 height: 230,
                 child: ListView.separated(
                   itemCount: cnt,

@@ -1,12 +1,13 @@
-// THIS IS SKELETON OF UI OF HOME PAGE. USE screen_home.dart AS ORIGINAL HOME PAGE
+// THIS IS SKELETON OF UI OF HOME PAGE. USE screen_home.dart AS ORIGINAL HOME PAGE -- NOT NEEDED ANYMORE. ALREADY COPIED THE CONTENTS.
 
 import 'package:flutter/material.dart';
+import 'package:predict/components/get_data.dart';
 import 'package:predict/widgets/home_page.dart';
 import 'package:predict/widgets/navdrawer.dart';
 import 'package:predict/widgets/search_page.dart';
 
 class HomeModel extends StatefulWidget {
-  HomeModel({super.key});
+  const HomeModel({super.key});
 
   @override
   State<HomeModel> createState() => _HomeModelState();
@@ -19,6 +20,9 @@ class _HomeModelState extends State<HomeModel> {
 
   final List<Widget> _pages = [HomePage(), SearchPage()];
 
+  // final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+  //     GlobalKey<RefreshIndicatorState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +34,6 @@ class _HomeModelState extends State<HomeModel> {
             allowImplicitScrolling: true,
             scrollDirection: Axis.horizontal,
             controller: _pageController,
-            // physics: ,
             onPageChanged: (int pnum) {
               setState(() {
                 _activePage = pnum;
@@ -49,7 +52,6 @@ class _HomeModelState extends State<HomeModel> {
             right: 0,
             height: 60,
             child: Container(
-              // color: Colors.black54,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List<Widget>.generate(
