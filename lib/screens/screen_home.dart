@@ -6,11 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import '../components/get_data.dart';
 
-class dataSend {
-  final Map<dynamic, dynamic> dataMap;
-  const dataSend(this.dataMap);
-}
-
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
 
@@ -19,6 +14,8 @@ class ScreenHome extends StatefulWidget {
 }
 
 class _ScreenHomeState extends State<ScreenHome> {
+  ScrollController _scontrol = ScrollController();
+
   int cnt = 0;
   int cnt1 = 0;
   int cnt2 = 8;
@@ -102,10 +99,14 @@ class _ScreenHomeState extends State<ScreenHome> {
 
   String mapData = '';
 
+  // --- edit this ---
+  _scrollListener() {}
+
   @override
   void initState() {
     super.initState();
     _getWeather();
+    // _scontrol.addListener(_scrollListener());
     // toTile = toTileDay1;
     // cnt = cnt1;
   }
@@ -129,8 +130,8 @@ class _ScreenHomeState extends State<ScreenHome> {
         mydat = prefs.getString('mydata1') ?? 'Unavailable';
 
         // --- testing sample (not needed) ----
-        mapData = prefs.getString('myMap') ?? '';
-        decoded = json.decode(mapData); // converting to map
+        // mapData = prefs.getString('myMap') ?? '';
+        // decoded = json.decode(mapData); // converting to map
 
         // --- start of today ----
         _today1 = prefs.getString('today1') ?? '';
@@ -142,10 +143,18 @@ class _ScreenHomeState extends State<ScreenHome> {
         _today7 = prefs.getString('today7') ?? '';
         _today8 = prefs.getString('today8') ?? '';
 
+        // print('Today1 is $_today1');
+        // print('Today2 is $_today2');
+        // print('Today3 is $_today3');
+        // print('Today4 is $_today4');
+        // print('Today5 is $_today5');
+        // print('Today6 is $_today6');
+        // print('Today7 is $_today7');
+        // print('Today8 is $_today8');
+
         _t1map = json.decode(_today1);
         toTileDay1.add(_t1map);
-
-        // cnt1 += 1;
+        cnt1 += 1;
 
         if (_today2 != '') {
           _t2map = json.decode(_today2);
@@ -307,6 +316,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                     setState(() {
                       toTile = [...toTileDay1];
                       cnt = cnt1;
+                      // if (_scontrol.offset >= )
                     });
                   },
                   child: Text('Today'),
@@ -336,6 +346,7 @@ class _ScreenHomeState extends State<ScreenHome> {
               height: 230,
               padding: EdgeInsets.only(top: 20),
               child: ListView.separated(
+                controller: _scontrol,
                 itemCount: cnt,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
@@ -345,10 +356,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                   );
                 },
                 itemBuilder: (BuildContext context, int index) {
-                  // final viewMap = _t3map;
+                  // final viewMap = _t3map;    -- donot uncomment
                   return WeatherTile(
                     data: toTile[index],
                   );
+                  // return Text('hello');
                 },
               ),
             ),

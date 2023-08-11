@@ -26,7 +26,7 @@ class WeatherTile extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color.fromARGB(255, 41, 52, 79),
+                  Color.fromARGB(255, 55, 68, 99),
                   Color.fromARGB(255, 22, 35, 64),
                 ],
               ),

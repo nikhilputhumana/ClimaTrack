@@ -57,11 +57,13 @@ Future<void> fetchData() async {
     _city = '${content['city']['name']}';
     _country = '${content['city']['country']}';
 
-    _temp = '${content['list'][0]['main']['temp']}';
-    _descr = '${content['list'][0]['weather'][0]['description']}';
-    _wind = '${content['list'][0]['wind']['speed']}';
-    _humidity = '${content['list'][0]['main']['humidity']}';
-    _dtdxt = '${content['list'][0]['dt_txt']}';
+    _temp = '${content['list'][0]['main']['temp']}'
+        .substring(0, '${content['list'][0]['main']['temp']}'.indexOf('.'));
+    print('temp iss $_temp');
+    // _descr = '${content['list'][0]['weather'][0]['description']}';
+    // _wind = '${content['list'][0]['wind']['speed']}';
+    // _humidity = '${content['list'][0]['main']['humidity']}';
+    // _dtdxt = '${content['list'][0]['dt_txt']}';
 
     // print('dtdxt is --- $_dtdxt');
 
@@ -91,37 +93,37 @@ Future<void> fetchData() async {
         // String _time = '${dateTime.hour}:${dateTime.minute}';
 
         dayDetails[{'1' '$cnt1'}.toString()] = {
-          'temp': '${content['list'][i]['main']['temp']}',
+          'temp': '${content['list'][i]['main']['temp']}'.substring(0, '${content['list'][i]['main']['temp']}'.indexOf('.')),
           'descr': '${content['list'][i]['weather'][0]['description']}',
-          'wind': '${content['list'][i]['wind']['speed']}',
+          'wind': '${content['list'][i]['wind']['speed']}'.substring(0, '${content['list'][i]['wind']['speed']}'.indexOf('.')),
           'dtdxt': '${content['list'][i]['dt_txt']}',
           'time': _time,
           'humidity': '${content['list'][i]['main']['humidity']}',
-          'feels': '${content['list'][i]['main']['feels_like']}',
+          'feels': '${content['list'][i]['main']['feels_like']}'.substring(0, '${content['list'][i]['main']['feels_like']}'.indexOf('.')),
           'imgId': '${content['list'][i]['weather'][0]['icon']}',
         };
         cnt1 += 1;
       } else if (firstPart == _tmrw) {
         dayDetails[{'2' '$cnt2'}.toString()] = {
-          'temp': '${content['list'][i]['main']['temp']}',
+          'temp': '${content['list'][i]['main']['temp']}'.substring(0, '${content['list'][i]['main']['temp']}'.indexOf('.')),
           'descr': '${content['list'][i]['weather'][0]['description']}',
-          'wind': '${content['list'][i]['wind']['speed']}',
+          'wind': '${content['list'][i]['wind']['speed']}'.substring(0, '${content['list'][i]['wind']['speed']}'.indexOf('.')),
           'dtdxt': '${content['list'][i]['dt_txt']}',
           'time': _time,
           'humidity': '${content['list'][i]['main']['humidity']}',
-          'feels': '${content['list'][i]['main']['feels_like']}',
+          'feels': '${content['list'][i]['main']['feels_like']}'.substring(0, '${content['list'][i]['main']['feels_like']}'.indexOf('.')),
           'imgId': '${content['list'][i]['weather'][0]['icon']}',
         };
         cnt2 += 1;
       } else if (firstPart == _dayAfter) {
         dayDetails[{'3' '$cnt3'}.toString()] = {
-          'temp': '${content['list'][i]['main']['temp']}',
+          'temp': '${content['list'][i]['main']['temp']}'.substring(0, '${content['list'][i]['main']['temp']}'.indexOf('.')),
           'descr': '${content['list'][i]['weather'][0]['description']}',
-          'wind': '${content['list'][i]['wind']['speed']}',
+          'wind': '${content['list'][i]['wind']['speed']}'.substring(0, '${content['list'][i]['wind']['speed']}'.indexOf('.')),
           'dtdxt': '${content['list'][i]['dt_txt']}',
           'time': _time,
           'humidity': '${content['list'][i]['main']['humidity']}',
-          'feels': '${content['list'][i]['main']['feels_like']}',
+          'feels': '${content['list'][i]['main']['feels_like']}'.substring(0, '${content['list'][i]['main']['feels_like']}'.indexOf('.')),
           'imgId': '${content['list'][i]['weather'][0]['icon']}',
         };
         cnt3 += 1;

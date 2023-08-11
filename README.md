@@ -1,4 +1,4 @@
-# Weather App
+# Weather App - ClimaTrack
 
 A new Flutter project. [Backend Done]
 
@@ -29,6 +29,7 @@ To provide permission for location, add the following line as 2nd line (before a
 
 ## To Do
 
+* Next create listview in home_page.dart.
 * Change color when buttons today, tmrw & day aftr is clicked (when active one color, when inactive another one)
 
 ---------------- After that do these ------------------
