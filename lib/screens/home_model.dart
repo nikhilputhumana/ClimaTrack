@@ -1,4 +1,4 @@
-// THIS IS SKELETON OF UI OF HOME PAGE. USE screen_home.dart AS ORIGINAL HOME PAGE -- NOT NEEDED ANYMORE. ALREADY COPIED THE CONTENTS.
+// TRY OUT EVERYTHING HERE
 
 import 'package:flutter/material.dart';
 import 'package:predict/components/get_data.dart';

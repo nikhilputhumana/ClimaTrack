@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:predict/widgets/search_page.dart';
+import 'package:predict/components/get_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -9,7 +9,6 @@ class NavDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       width: MediaQuery.of(context).size.width / 1.6,
-      backgroundColor: Color.fromARGB(255, 41, 52, 79),
       // shape: ,
       child: ListView(
         scrollDirection: Axis.vertical,
@@ -21,6 +20,37 @@ class NavDrawer extends StatelessWidget {
                 fontSize: 22,
               ),
             ),
+          ),
+          ListTile(
+            title: const Text(
+              'Refresh Page',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            onTap: () async {
+              // CircularProgressIndicator();
+              showDialog(
+                context: context,
+                builder: (builder) {
+                  return const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                },
+              );
+              // print('Refreshing...');
+              await fetchData().then(
+                (value) {
+                  Navigator.pop(context);
+                },
+              );
+
+              Navigator.pop(context);
+            },
           ),
           ListTile(
             title: const Text(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:predict/screens/screen_home.dart';
-import 'package:predict/screens/screen_initial.dart';
+import 'package:predict/screens/screen_welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/get_data.dart';
@@ -20,17 +20,48 @@ class ScreenSplash extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('SPLASH SCREEN'),
-                  SizedBox(
-                    height: 60,
+                  Image(
+                    image: AssetImage('./assets/images/splash.gif'),
+                    width: 150,
+                    height: 150,
                   ),
-                  CircularProgressIndicator(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'ClimaTrack',
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.8,
+                      color: Color.fromARGB(255, 133, 180, 234),
+                      shadows: [
+                        Shadow(
+                          offset: Offset(5, 6),
+                          blurRadius: 5,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 150,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 100,
+                      right: 100,
+                      top: 100,
+                    ),
+                    child: LinearProgressIndicator(
+                      minHeight: 2,
+                    ),
+                  ),
                 ],
               ),
             ),
           );
         } else {
-          return snapshot.data! ? ScreenInitial() : ScreenHome();
+          return snapshot.data! ? const ScreenWelcome() : const ScreenHome();
         }
       },
     );

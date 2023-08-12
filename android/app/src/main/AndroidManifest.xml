@@ -8,7 +8,7 @@
         </intent>
     </queries> <!--  Added by me upto here -->
     <application
-        android:label="predict"
+        android:label="ClimaTrack"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

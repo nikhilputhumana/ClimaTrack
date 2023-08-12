@@ -69,18 +69,18 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
     }).catchError((e) {
       debugPrint(e);
     });
-    _saveData();
+    _saveData(_lat, _lon);
   }
 
   // Getting cordinates from place search
   void _getCoords(lat, lon) {
     _lat = lat;
     _lon = lon;
-    _saveData();
+    _saveData(_lat, _lon);
   }
 
   // SAVE DATA AND GO TO NEXT PAGE
-  void _saveData() async {
+  void _saveData(_lat, _lon) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isFirstTime', false);
     await prefs.setDouble('latitude', _lat);
@@ -98,15 +98,16 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return Container(
+      child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 50),
+          padding: const EdgeInsets.only(top: 45),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               PlaceAutocomplete.widget(
                 onDone: (e) {
+                  buildShowDialog(context);
                   final add = e.point?.toMap();
                   final lat = add?['lat'];
                   final lon = add?['lon'];
@@ -115,8 +116,14 @@ class _PlaceSelectWidgetState extends State<PlaceSelectWidget> {
                 // style: TextStyle(color: Colors.white),
               ),
 
-              const SizedBox(
-                height: 10,
+              const Padding(
+                padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                child: Text(
+                  'OR',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
 
               // --- Get current location ---

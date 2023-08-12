@@ -1,6 +1,7 @@
 // UI OF HOME PAGE
 
 import 'package:flutter/material.dart';
+import 'package:predict/components/get_data.dart';
 import 'package:predict/widgets/navdrawer.dart';
 import 'package:predict/widgets/weather_tile.dart';
 import 'package:intl/intl.dart';
@@ -219,6 +220,8 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
+  bool isRefreshing = false;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 # Weather App - ClimaTrack
 
-A Flutter App to view the present and next two day's climate for the given location. Shows basic details like:
+A Flutter App to view the present climate and forecasts next two day's climate for the given location. 
+Shows basic details like:
 * Temperature
 * Humidity
 * Wind speed
@@ -9,7 +10,7 @@ A Flutter App to view the present and next two day's climate for the given locat
 
 ## Dependedncies Used
 
-The following dependencies are used in this project:
+The following dependencies were used in this project:
 * free_place_search
 * geocoding
 * geolocator
@@ -49,20 +50,16 @@ To open link in browser, add the following line next to the above code.
 
 ### Start Here
 * Create a Logo.
-* Create Splash Screen.
-* Create a Welcome page.
-* Swipe down to refresh.
 
 ### Bug Fixes
 * Fix time zone showing multiple times for Today.
-* Keyboard should automatically close when switched from search page to main page (to avoid pixels overflowing).
 
 ### Optional
 * Create popup for showing detailed data about each time zone.
 * Orange color for hot climate and blue color for cold climate.
 
 ### Location in PC
-The project is located at 
+The project is located at
 
 D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC (for personal references)
 

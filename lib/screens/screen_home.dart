@@ -1,5 +1,4 @@
-// THE PAGE TO TRY OUT EVERYTHING
-
+// MAIN HOME PAGE (THE SKELETAL PART)
 
 import 'package:flutter/material.dart';
 import 'package:predict/widgets/home_page.dart';
@@ -13,7 +12,6 @@ class ScreenHome extends StatefulWidget {
 }
 
 class _ScreenHomeState extends State<ScreenHome> {
-  
   PageController _pageController = PageController(initialPage: 0);
   int _activePage = 0;
 
@@ -32,6 +30,7 @@ class _ScreenHomeState extends State<ScreenHome> {
             controller: _pageController,
             onPageChanged: (int pnum) {
               setState(() {
+                FocusScope.of(context).requestFocus(FocusNode());   // to turn off keyboard while switching pages
                 _activePage = pnum;
               });
             },
@@ -47,27 +46,26 @@ class _ScreenHomeState extends State<ScreenHome> {
             left: 0,
             right: 0,
             height: 60,
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List<Widget>.generate(
-                    _pages.length,
-                    (index) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: InkWell(
-                            onTap: () {
-                              _pageController.animateToPage(index,
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.easeIn);
-                            },
-                            child: CircleAvatar(
-                              radius: 5,
-                              backgroundColor: _activePage == index
-                                  ? const Color.fromARGB(255, 114, 186, 246)
-                                  : const Color.fromARGB(255, 64, 132, 188),
-                            ),
-                          ),
-                        )),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List<Widget>.generate(
+                _pages.length,
+                (index) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: InkWell(
+                    onTap: () {
+                      _pageController.animateToPage(index,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn);
+                    },
+                    child: CircleAvatar(
+                      radius: 5,
+                      backgroundColor: _activePage == index
+                          ? const Color.fromARGB(255, 114, 186, 246)
+                          : const Color.fromARGB(255, 64, 132, 188),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
