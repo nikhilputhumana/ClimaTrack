@@ -8,7 +8,7 @@ ClimaTrack is a Flutter App to view the present climate and forecasts next two d
 ![GitHub stars](https://img.shields.io/github/stars/nikhilputhumana/ClimaTrack?style=social&label=Star)
 
 
-### ['Download the App']('https://github.com/nikhilputhumana/ClimaTrack/releases/download/1.0.0/app-arm64-v8a-release.apk')
+### [Download the App](https://github.com/nikhilputhumana/ClimaTrack/releases/download/1.0.0/app-arm64-v8a-release.apk)
 
 ## Features
 
