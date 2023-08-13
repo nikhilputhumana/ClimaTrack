@@ -226,7 +226,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const NavDrawer(),
+      drawer: NavDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 40, 20, 10),

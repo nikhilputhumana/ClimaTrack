@@ -51,12 +51,11 @@ class ScreenWelcome extends StatelessWidget {
           ),
         ),
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
+          Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (builder) => ScreenInitial(),
+              builder: (builder) => const ScreenInitial(),
             ),
           );
         },

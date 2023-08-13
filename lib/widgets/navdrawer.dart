@@ -3,7 +3,17 @@ import 'package:predict/components/get_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NavDrawer extends StatelessWidget {
-  const NavDrawer({super.key});
+  NavDrawer({super.key});
+
+  final _starUrl = Uri.parse('https://github.com/nikhilputhumana/ClimaTrack');
+  final _issue = Uri.parse(
+      'https://github.com/nikhilputhumana/ClimaTrack/issues/new/choose');
+
+  void _urlLaunch(_url) async {
+    if (!await launchUrl(_url, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $_starUrl';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +70,14 @@ class NavDrawer extends StatelessWidget {
               ),
             ),
             onTap: () async {
-              final url2 = Uri.parse(
-                  'https://github.com/nikhilputhumana/ClimaTrack/issues/new/choose');
-              if (await canLaunchUrl(url2)) {
-                await launchUrl(url2);
-              } else {
-                // can't launch url
-              }
+              _urlLaunch(_issue);
+              // final url2 = Uri.parse(
+              //     'https://github.com/nikhilputhumana/ClimaTrack/issues/new/choose');
+              // if (await canLaunchUrl(url2)) {
+              //   await launchUrl(url2);
+              // } else {
+              //   // can't launch url
+              // }
             },
           ),
           ListTile(
@@ -77,14 +88,7 @@ class NavDrawer extends StatelessWidget {
               ),
             ),
             onTap: () async {
-              // Navigator.of(context).pop();
-              final url =
-                  Uri.parse('https://github.com/nikhilputhumana/ClimaTrack');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              } else {
-                // can't launch url
-              }
+              _urlLaunch(_starUrl);
             },
           ),
         ],
