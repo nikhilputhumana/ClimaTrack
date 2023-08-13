@@ -22,7 +22,7 @@ The app shows the following details of each location:
 The app also forecasts the weather for next 2 days for different time zones.
 
 ## Screenshots
-<img src='./assets/screenshots/welcome.png' width='40%'> <img src='./assets/screenshots/choose.png' width='40%'> 
+<img src='./assets/screenshots/welcome.png' width='40%'> <img src='./assets/screenshots/choose.png' width='40%' scale='0.5'> 
 <img src='./assets/screenshots/main.png' width='40%'> <img src='./assets/screenshots/drawer.png' width='40%'>
 
 ## Dependencies Used
