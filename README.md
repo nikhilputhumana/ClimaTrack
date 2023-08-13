@@ -22,8 +22,8 @@ The app shows the following details of each location:
 The app also forecasts the weather for next 2 days for different time zones.
 
 ## Screenshots
-![welcome](./assets/screenshots/welcome.png) ![choose](./assets/screenshots/choose.png)
-![main](/assets/screenshots/main.png) ![drawer](./assets/screenshots/drawer.png)
+<img src='./assets/screenshots/welcome.png' width='40%'> <img src='./assets/screenshots/choose.png' width='40%'> 
+<img src='./assets/screenshots/main.png' width='40%'> <img src='./assets/screenshots/drawer.png' width='40%'>
 
 ## Dependencies Used
 The following dependencies were used in this project:
