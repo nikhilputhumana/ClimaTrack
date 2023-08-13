@@ -49,10 +49,10 @@ To open link in browser, add the following line next to the above code.
 ## To Do
 
 ### Start Here
-* Create a Logo.
+* All Done
 
 ### Bug Fixes
-* Fix time zone showing multiple times for Today.
+* Fix time zone showing multiple times for Today. - That's a feature 😎
 
 ### Optional
 * Create popup for showing detailed data about each time zone.

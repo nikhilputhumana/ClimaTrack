@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:predict/screens/screen_home.dart';
 
 class WeatherTile extends StatelessWidget {
   final Map<dynamic, dynamic> data;

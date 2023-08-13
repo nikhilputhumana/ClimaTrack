@@ -20,8 +20,6 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: _scaffoldKey,
-      // drawer: NavDrawer(),
       body: Stack(
         children: [
           PageView.builder(

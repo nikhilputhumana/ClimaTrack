@@ -1,7 +1,6 @@
 // UI OF HOME PAGE
 
 import 'package:flutter/material.dart';
-import 'package:predict/components/get_data.dart';
 import 'package:predict/widgets/navdrawer.dart';
 import 'package:predict/widgets/weather_tile.dart';
 import 'package:intl/intl.dart';
@@ -298,10 +297,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
 
-                    // const SizedBox(
-                    //   width: 40,
-                    // ),
-
                     // -- Temp value --
                     Stack(
                       alignment: Alignment.center,
@@ -314,7 +309,6 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 85,
                               fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 133, 180, 234),
-                              // height: 1.5,
                             ),
                           ),
                         ),

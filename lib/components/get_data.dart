@@ -11,12 +11,6 @@ double _lon = 0.0;
 String _city = '';
 String _country = '';
 
-String _temp = '';
-String _descr = '';
-String _wind = '';
-String _humidity = '';
-String _feels = '';
-String _dtdxt = '';
 
 Future<void> _getCoords() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -44,9 +38,6 @@ Future<void> fetchData() async {
     _city = '${content['city']['name']}';
     _country = '${content['city']['country']}';
 
-    _temp = '${content['list'][0]['main']['temp']}'
-        .substring(0, '${content['list'][0]['main']['temp']}'.indexOf('.'));
-
     Map<String, dynamic> dayDetails = {};
 
     int cnt1 = 1;
@@ -61,7 +52,6 @@ Future<void> fetchData() async {
       String _time = thisDate.substring(
           thisDate.indexOf(' ') + 1, thisDate.indexOf(' ') + 6);
 
-      // ------------------------------------
       String _imd = '${content['list'][i]['weather'][0]['icon']}';
       String _hu = '${content['list'][i]['main']['humidity']}';
       String _de = '${content['list'][i]['weather'][0]['description']}';
@@ -133,7 +123,7 @@ Future<void> fetchData() async {
       await prefs.setString('dayaftr$i', dayData);
     }
   } else {
-    print('Failed to fetch data');
+    // print('Failed to fetch data');
     // setState(() {
     //   _data = 'Failed to fetch data';
     // });

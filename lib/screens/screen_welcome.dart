@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:predict/screens/screen_initial.dart';
-import 'package:predict/screens/test_welcome.dart';
 
 class ScreenWelcome extends StatelessWidget {
   const ScreenWelcome({super.key});
@@ -8,7 +7,7 @@ class ScreenWelcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.all(30),
           child: Column(
@@ -48,23 +47,11 @@ class ScreenWelcome extends StatelessWidget {
                   ),
                 ),
               ),
-              // Align(
-              //   alignment: Alignment.centerRight,
-              //   child: TextButton.icon(
-              //     // color: Colors.white,
-              //     label: Text(''),
-              //     onPressed: () {},
-              //     icon: Icon(Icons.arrow_right),
-              //     style: IconButton.styleFrom(
-              //       backgroundColor: Color.fromARGB(255, 123, 191, 247),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
       ),
-      // --- remove it if not looking good -----
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(
@@ -73,11 +60,11 @@ class ScreenWelcome extends StatelessWidget {
             ),
           );
         },
-        child: Icon(
+        backgroundColor: const Color.fromARGB(255, 123, 191, 247),
+        child: const Icon(
           Icons.arrow_forward,
           color: Colors.black,
         ),
-        backgroundColor: Color.fromARGB(255, 123, 191, 247),
       ),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
