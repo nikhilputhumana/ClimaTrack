@@ -1,16 +1,33 @@
-# Weather App - ClimaTrack
+# ClimaTrack
 
-A Flutter App to view the present climate and forecasts next two day's climate for the given location. 
-Shows basic details like:
+ClimaTrack is a Flutter App to view the present climate and forecasts next two day's climate for the given location.
+
+[![made-with-flutter](https://img.shields.io/badge/Made%20with-Flutter-1f425f.svg)](https://flutter.dev/)
+
+### Don't forget to ⭐ the repo
+![GitHub stars](https://img.shields.io/github/stars/nikhilputhumana/ClimaTrack?style=social&label=Star)
+
+
+### [Download the App]('https://github.com/nikhilputhumana/ClimaTrack/releases/download/1.0.0/app-arm64-v8a-release.apk')
+
+## Features
+
+The app shows the following details of each location:
 * Temperature
 * Humidity
 * Wind speed
-* Description of present condition
+* Description of current weather
 * Temperature actually felt
 
-## Dependedncies Used
+The app also forecasts the weather for next 2 days for different time zones.
 
+## Screenshots
+![welcome](./assets/screenshots/welcome.png) ![choose](./assets/screenshots/choose.png)
+![main](/assets/screenshots/main.png) ![drawer](./assets/screenshots/drawer.png)
+
+## Dependencies Used
 The following dependencies were used in this project:
+
 * free_place_search
 * geocoding
 * geolocator
@@ -19,50 +36,27 @@ The following dependencies were used in this project:
 * intl
 * url_launcher
 
-## Screenshots
+## Building from Source
 
-<img> 
-<img>
+1. If you don't have Flutter SDK installed, please visit official [Flutter](https://flutter.dev/) site.
+2. Fetch latest source code from master branch.
 
-## My Notes
-
-### Location permission
-
-To provide permission for location, add the following line as 2nd line (before application) in android\app\src\main\AndroidManifest.xml
-
-```xml
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> 
+```
+git clone https://github.com/nikhilputhumana/ClimaTrack.git
 ```
 
-To open link in browser, add the following line next to the above code.
+3. Run the app with Android Studio or VS Code. Or the command line:
 
-```xml
-<queries>
-    <intent>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="https" />
-    </intent>
-</queries>
+```
+flutter pub get
+flutter run
 ```
 
-## To Do
+## Contributing
 
-### Start Here
-* All Done
+[Pull requests](https://github.com/nikhilputhumana/ClimaTrack/compare) are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-### Bug Fixes
-* Fix time zone showing multiple times for Today. - That's a feature 😎
+## License
 
-### Optional
-* Create popup for showing detailed data about each time zone.
-* Orange color for hot climate and blue color for cold climate.
-
-### Location in PC
-The project is located at
-
-D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC (for personal references)
-
-
-## Thanks :)
-
+[MIT](https://choosealicense.com/licenses/mit/)
