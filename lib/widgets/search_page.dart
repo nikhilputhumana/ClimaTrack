@@ -6,6 +6,10 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PlaceSelectWidget();
+    return ListView(
+      children: const [
+        PlaceSelectWidget(),
+      ],
+    );
   }
 }

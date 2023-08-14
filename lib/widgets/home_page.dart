@@ -230,7 +230,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 40, 20, 10),
-          child: Column(
+          child: ListView(  // column changed to listview
             children: [
               // --- Header part --
               Row(
