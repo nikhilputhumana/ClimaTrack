@@ -39,7 +39,7 @@ class ScreenWelcome extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Find your weather predictions in your City. Easy steps to predict the weather and make your day easier. ',
+                  'Find weather predictions in your City. Easy steps to predict the weather and make your day easier. ',
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 17,
