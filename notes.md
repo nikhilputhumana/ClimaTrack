@@ -35,7 +35,7 @@ To open link in browser, add the following line next to the above code.
 ### Location in PC
 The project is located at
 
-D:\NIKHIL\New Flutter\New-folder\predict_placename\predict in PC (for personal references)
+D:\NIKHIL\Flutter Projects\PROJECTS\predict-Weather_App\ in PC (for personal references)
 
 
 ## Thanks :)
